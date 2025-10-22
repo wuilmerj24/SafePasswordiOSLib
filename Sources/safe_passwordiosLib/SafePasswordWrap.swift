@@ -7,6 +7,18 @@
 
 import Foundation
 
+@objc
+public enum PasswordStrengthW:Int {
+    
+    case weak = 0
+    case moderate = 1
+    case strong = 2
+
+
+
+}
+
+
 @objcMembers
 @objc(SafePasswordWrap)
 public class SafePasswordWrap: NSObject {
@@ -21,7 +33,14 @@ public class SafePasswordWrap: NSObject {
     }
     
     @objc
-    public func checkStrengthW(password:String)->Bool {
-        return checkStrength(password: password)
+    public func checkStrengthW(password:String)->PasswordStrengthW {
+        let strength = checkStrength(password: password)
+        if strength == .weak {
+            return .weak
+        }else if strength == .moderate {
+            return .moderate
+        }else {
+            return .strong
+        }
     }
 }

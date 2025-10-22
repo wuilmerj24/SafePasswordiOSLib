@@ -23,7 +23,7 @@ let package = Package(
             name: "safe_passwordiosLib",
             dependencies: ["safe_passwordiOSLibBinary"],
             path: "Sources/safe_passwordiosLib",
-            sources: ["safe_passwordiosLib.swift"],
+            sources: ["safe_passwordiosLib.swift","SafePasswordWrap.swift"],
             publicHeadersPath: "include"
         ),
         .testTarget(
