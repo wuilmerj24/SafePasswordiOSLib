@@ -502,20 +502,14 @@ fileprivate struct FfiConverterString: FfiConverter {
 // Note that we don't yet support `indirect` for enums.
 // See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
 
-//objc public enum PasswordStrength: Equatable, Hashable,Int {
-//    
-//    case weak
-//    case moderate
-//    case strong
-//
-//
-//
-//}
+public enum PasswordStrength: Equatable, Hashable {
+    
+    case weak
+    case moderate
+    case strong
 
-@objc public enum PasswordStrength: Int {
-    case weak = 0
-    case moderate = 1
-    case strong = 2
+
+
 }
 
 
@@ -577,7 +571,6 @@ public func FfiConverterTypePasswordStrength_lower(_ value: PasswordStrength) ->
     return FfiConverterTypePasswordStrength.lower(value)
 }
 
-@objc
 public func checkStrength(password: String) -> PasswordStrength  {
     return try!  FfiConverterTypePasswordStrength_lift(try! rustCall() {
     uniffi_safe_password_fn_func_check_strength(
@@ -586,7 +579,6 @@ public func checkStrength(password: String) -> PasswordStrength  {
 })
 }
 
-@objc
 public func generatePassword(length: UInt64, uppercase: Bool, numbers: Bool, symbols: Bool) -> String  {
     return try!  FfiConverterString.lift(try! rustCall() {
     uniffi_safe_password_fn_func_generate_password(
