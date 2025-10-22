@@ -5,6 +5,8 @@
 //  Created by Maria Castillo on 22/10/25.
 //
 
+import Foundation
+
 @objcMembers
 @objc(SafePasswordWrap)
 public class SafePasswordWrap: NSObject {
